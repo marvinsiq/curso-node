@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/marvinsiq/curso-node#readme",
   "dependencies": {
+    "body-parser": "1.18.3",
     "express": "4.16.3",
-    "marko": "4.13.4-1"
+    "marko": "4.13.4-1",
+    "method-override": "3.0.0",
+    "sqlite3": "4.1.1"
   }
 }
