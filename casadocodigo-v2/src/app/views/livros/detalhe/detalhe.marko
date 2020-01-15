@@ -22,36 +22,26 @@
         </header>
         <main class="conteudoPrincipal">
             <div class="container">
-                <h1>Cadastro de livros</h1>
+                <h1>Detalhe do livro</h1>
+               
 
-                <div if(data.errosValidacao)>
-                    <div class="alert alert-danger" for(erro in data.errosValidacao)>
-                        ${erro.param} - ${erro.msg}
-                    </div>
-                </div>
-
-                <form action="/livros/form" method="post">
-
-                    <div if(data.livro.id)>
-                        <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="id" value="${data.livro.id}">
+                    <div class="form-group">
+                        <span>Id</span>
+                        <span id="id">${data.livro.id}</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="titulo">Titulo:</label>
-                        <input type="text" id="titulo" name="titulo" value="${data.livro.titulo}" placeholder="coloque o titulo" class="form-control"/>
+                        <span>Titulo:</span>
+                        <span id="titulo" name="titulo">${data.livro.titulo}</span>
                     </div>
                     <div class="form-group">
-                        <label for="preco">Preço:</label>
-                        <input type="text" id="preco" name="preco" placeholder="150.25" value="${data.livro.preco}" class="form-control"/>
+                        <span>Preço:</span>
+                        <span id="preco" name="preco">${data.livro.preco}</span>
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descrição:</label>
-                        <textarea cols="20" rows="10"  id="descricao" name="descricao" placeholder="fale sobre o livro" class="form-control">${data.livro.descricao}</textarea>
+                        <span>Descrição:</span>
+                        <span id="descricao" name="descricao">${data.livro.descricao}</span>
                     </div>
-
-                    <input type="submit" value="Salvar" class="btn btn-primary"/>
-                </form>
             </div>
         </main>
         <footer class="rodape">
