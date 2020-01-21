@@ -1,15 +1,31 @@
-const express = require('express');
-const consign = require('consign');
-const bodyParser = require('body-parser');
+var express = require('express');
+var consign = require('consign');
+var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
+var morgan = require('morgan');
+var logger = require('../servicos/logger.js');
 
 module.exports = function () {
-    const app = express();
+  var app = express();
 
-    app.use(bodyParser.json());
+  app.use(morgan("common", {
+    stream: {
+      write: function (mensagem) {
+        logger.info(mensagem);
+      }
+    }
+  }));
 
-    consign()
-        .include('controllers')
-        .into(app);
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
-    return app;
+  app.use(expressValidator());
+
+  consign()
+    .include('controllers')
+    .then('persistencia')
+    .then('servicos')
+    .into(app);
+
+  return app;
 }

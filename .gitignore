@@ -1,2 +1,12 @@
+# Dependency directories
 **/node_modules
+
+# Maps
 **/*.map
+
+# credentials
+**/credentials/*.json
+
+# Logs
+**/logs
+**/*.log
